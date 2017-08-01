@@ -2,7 +2,7 @@
 D:\app\Git-2.13.3-32-bit.ext
 以管理员身份运行，一路默认，安装完成。
 
-二、设置用户信息
+二、设置全局用户信息
 开始->所有程序->git->git-bash 打开 git 模拟shell
 设置用户名及邮箱：
 liuyh@liuyh-PC MINGW32 ~
@@ -38,6 +38,26 @@ total 40
 drwxr-xr-x 1 liuyh 197121 0 八月  1 13:29 ./
 drwxr-xr-x 1 liuyh 197121 0 八月  1 13:27 ../
 drwxr-xr-x 1 liuyh 197121 0 八月  1 13:29 .git/
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+$
+四、修改文件，并利用git status 查看仓库状态，用git diff 查看修改内容
+--未修改前，显示working tree clean
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+--修改后显示仓库中git_learn.txt 发生了变化，但还没有提交。
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   git_learn.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
 
 liuyh@liuyh-PC MINGW32 /d/gitrep (master)
 $
