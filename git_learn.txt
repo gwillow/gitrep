@@ -169,4 +169,153 @@ $
 
 七、工作区、暂存区、仓库
     add 到暂存区，工作区又开始做修改，但没有再次add 的这些修改，如果要撤销,可以用撤销工作区的所有修改来实现。
+	$ git commit -m "理解撤销及暂存区概念"
+	[master d7edc91] 理解撤销及暂存区概念
+	 1 file changed, 19 insertions(+)
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git status
+	On branch master
+	nothing to commit, working tree clean
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git diff git_learn.txt
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git diff HEAD git_learn.txt
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git diff HEAD -- git_learn.txt
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git diff HEAD --cached git_learn.txt
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git status
+	On branch master
+	Changes not staged for commit:
+	  (use "git add <file>..." to update what will be committed)
+	  (use "git checkout -- <file>..." to discard changes in working directory)
+
+			modified:   git_learn.txt
+
+	no changes added to commit (use "git add" and/or "git commit -a")
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git diff git_learn.txt
+	diff --git a/git_learn.txt b/git_learn.txt
+	index 48e1369..82e6a76 100644
+	--- a/git_learn.txt
+	+++ b/git_learn.txt
+	@@ -169,4 +169,4 @@ $
+
+	 七、工作区、暂存区、仓库
+		 add 到暂存区，工作区又开始做修改，但没有再次add 的这些修改，如果要撤销,可以用撤销工作区的所有修改来实现。
+	-
+	\ No newline at end of file
+	+       应该是这样理解
+	\ No newline at end of file
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git diff HEAD --cached git_learn.txt
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git diff --cached git_learn.txt
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git diff HEAD -- git_learn.txt
+	diff --git a/git_learn.txt b/git_learn.txt
+	index 48e1369..82e6a76 100644
+	--- a/git_learn.txt
+	+++ b/git_learn.txt
+	@@ -169,4 +169,4 @@ $
+
+	 七、工作区、暂存区、仓库
+		 add 到暂存区，工作区又开始做修改，但没有再次add 的这些修改，如果要撤销,可以用撤销工作区的所有修改来实现。
+	-
+	\ No newline at end of file
+	+       应该是这样理解
+	\ No newline at end of file
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git checkout -- git_learn.txt
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git diff git_learn.txt
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+
+	--回退已经add 的修改到工作区
+	$ git reset HEAD readme.txt
+	Unstaged changes after reset:
+	M       readme.txt
+
+八、设置SSH 秘钥登录 githup
+    1. 本地生成公钥和私钥
+	$ ssh-keygen.exe -t rsa -C "yahuiliu_2008@163.com"
+	Generating public/private rsa key pair.
+	Enter file in which to save the key (/c/Users/liuyh/.ssh/id_rsa):
+	Created directory '/c/Users/liuyh/.ssh'.
+	Enter passphrase (empty for no passphrase):
+	Enter same passphrase again:
+	Your identification has been saved in /c/Users/liuyh/.ssh/id_rsa.
+	Your public key has been saved in /c/Users/liuyh/.ssh/id_rsa.pub.
+	The key fingerprint is:
+	SHA256:kB5Wjizz2UXNKXwWp8o9FvTPHF7twDpV5S3A2eRQqmY yahuiliu_2008@163.com
+	The key's randomart image is:
+	+---[RSA 2048]----+
+	|        ...+=B+ +|
+	|     . = .o.OX.oo|
+	|    o B . .++ B.=|
+	|     * = o + +.Bo|
+	|      + S E *  .=|
+	|         o . o   |
+	|                 |
+	|                 |
+	|                 |
+	+----[SHA256]-----+
+
+	liuyh@liuyh-PC MINGW32 ~
+	$ dir .ssh
+	id_rsa  id_rsa.pub
+
+	liuyh@liuyh-PC MINGW32 ~
+	$ cat .ssh/id_rsa.pub
+	ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDoeXgXdojvLwbP7MvnXS03tOYYqAJHjxb+aVZLpW/qcRzNyGkcYEXzAxIcTXjg/9J+9N6kMLDYLJ9+elaPneYdbeo8xlE3x+I0rhLnmD6QBPj+qNGSZSo8wgoFA2fZCC+TUwBW3dYGszlsGNtKHf+zI5hvdM3pyHvbkL4pk72gb6ITXYtBcfd/PDm+lDM5tc669xWGY/sWQSnc3m00m76eHci6T8zt8SPMtPZ9ol1nejbtt5vtDhX522oGS7kmYgS5aFXohe2hfbJa6qfsjSMV404zlm+oh54d3+WyLwKmt1MfPqDZnbaS7Hd1G49rO8W0ajvXhCawRTBCDew8eliv yahuiliu_2008@163.com
+
+	liuyh@liuyh-PC MINGW32 ~
+	$
+	2. 将公钥内容添加到自己githup.com 账号的 SSH KEY
 	
+九、本地库与远程GITHUB 仓库关联
+	1. 远程githup 也创建一个仓库 gwillow/gitrep 与本地仓库同名
+	
+	2. 本地仓库 以名称 origin 与远程仓库关联
+	$ cd gitrep
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git remote add origin git@github.com:gwillow/gitrep.git
+	3. 将本地仓库 push 到githup 新建立的仓库,加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，
+	   还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
+	$ git push -u origin master
+		The authenticity of host 'github.com (192.30.255.113)' can't be established.
+		RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+		Are you sure you want to continue connecting (yes/no)? yes
+		Warning: Permanently added 'github.com,192.30.255.113' (RSA) to the list of known hosts.
+		Counting objects: 15, done.
+		Delta compression using up to 4 threads.
+		Compressing objects: 100% (10/10), done.
+		Writing objects: 100% (15/15), 3.07 KiB | 0 bytes/s, done.
+		Total 15 (delta 4), reused 0 (delta 0)
+		remote: Resolving deltas: 100% (4/4), done.
+		To github.com:gwillow/gitrep.git
+		 * [new branch]      master -> master
+		Branch master set up to track remote branch master from origin.
+
+		liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+
+十、一朝拥有，一生无忧
+	从现在起，只要本地作了提交，就可以通过命令：
+
+	$ git push origin master
+	把本地master分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！
+
