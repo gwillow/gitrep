@@ -1,0 +1,43 @@
+一、GIT 在 WINDOWS 中安装步骤：
+D:\app\Git-2.13.3-32-bit.ext
+以管理员身份运行，一路默认，安装完成。
+
+二、设置用户信息
+开始->所有程序->git->git-bash 打开 git 模拟shell
+设置用户名及邮箱：
+liuyh@liuyh-PC MINGW32 ~
+$ git config --global user.name "Liu yahui"
+
+liuyh@liuyh-PC MINGW32 ~
+$ git config --global user.email "yahuiliu_2008@163.com"
+
+liuyh@liuyh-PC MINGW32 ~
+$
+
+三、创建目录，并初始化为git仓库
+liuyh@liuyh-PC MINGW32 ~
+$ cd d:/
+
+liuyh@liuyh-PC MINGW32 /d
+$ pwd
+/d
+liuyh@liuyh-PC MINGW32 /d
+$ mkdir gitrep
+liuyh@liuyh-PC MINGW32 /d
+$ cd gitrep/
+$ pwd
+/d/gitrep
+
+liuyh@liuyh-PC MINGW32 /d/gitrep
+$ git init
+Initialized empty Git repository in D:/gitrep/.git/
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+$ ls -al
+total 40
+drwxr-xr-x 1 liuyh 197121 0 八月  1 13:29 ./
+drwxr-xr-x 1 liuyh 197121 0 八月  1 13:27 ../
+drwxr-xr-x 1 liuyh 197121 0 八月  1 13:29 .git/
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+$
