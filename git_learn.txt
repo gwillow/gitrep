@@ -151,3 +151,22 @@ Date:   Tue Aug 1 13:41:20 2017 +0800
 
 liuyh@liuyh-PC MINGW32 /d/gitrep (master)
 $
+
+六、总有后悔药
+    git 以commit id 记录你的每一次改变，这样你就可以使用 git reset --hard commit id 在时光中穿梭，而不会迷路
+	$ git reflog
+	6812890 (HEAD -> master) HEAD@{0}: reset: moving to 681289067fc663ea929f526ba7bacab04b49af75
+	afb4d60 HEAD@{1}: reset: moving to HEAD^
+	6812890 (HEAD -> master) HEAD@{2}: commit: 增加过程演示
+	afb4d60 HEAD@{3}: commit: 增加中文乱码解决方案
+	7fa7e83 HEAD@{4}: commit: append modify
+	186453d HEAD@{5}: commit (initial): Write a ABC for git configure
+    
+	$ git reset --hard HEAD^
+	HEAD is now at afb4d60 增加中文乱码解决方案
+	$ git reset --hard 681289067fc663ea929f526ba7bacab04b49af75
+	HEAD is now at 6812890 增加过程演示
+
+七、工作区、暂存区、仓库
+    add 到暂存区，工作区又开始做修改，但没有再次add 的这些修改，如果要撤销,可以用撤销工作区的所有修改来实现。
+	
