@@ -318,4 +318,26 @@ $
 
 	$ git push origin master
 	把本地master分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！
+	
+	示例：
+	$ git commit -m "本地库关联远程库，并用本地库初始化远程库"
+	[master 5752ddd] 本地库关联远程库，并用本地库初始化远程库
+	 1 file changed, 150 insertions(+), 1 deletion(-)
 
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git remote -v
+	origin  git@github.com:gwillow/gitrep.git (fetch)
+	origin  git@github.com:gwillow/gitrep.git (push)
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git push origin master
+	Counting objects: 3, done.
+	Delta compression using up to 4 threads.
+	Compressing objects: 100% (2/2), done.
+	Writing objects: 100% (3/3), 4.06 KiB | 0 bytes/s, done.
+	Total 3 (delta 0), reused 0 (delta 0)
+	To github.com:gwillow/gitrep.git
+	   d7edc91..5752ddd  master -> master
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$
