@@ -341,3 +341,6 @@ $
 
 	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
 	$
+十一、TortoiseGit 安装完后需要设置下network的客户端，指定git的git/usr/bin/ssh.ext 否则push到远程时会报错(因无法加载git建立的私钥)
+    TortoiseGit 2.5  push No supported authentication methods available
+	
