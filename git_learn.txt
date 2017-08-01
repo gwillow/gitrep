@@ -61,3 +61,10 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 liuyh@liuyh-PC MINGW32 /d/gitrep (master)
 $
+五、中文乱码怎么破
+1. 代码中包含中文
+   文档使用UTF-8 无BOM编码保存
+   Git Bash 窗体右击 点 options 点左侧 Text 再点右侧的 Local Character set  设置为 zh_CH  UTF-8
+   Cygwin bin下的git设置
+   $ git config --system i18n.commitEncoding utf-8
+   $ git config --system i18n.logoutputencoding utf-8
