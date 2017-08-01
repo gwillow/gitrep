@@ -68,3 +68,86 @@ $
    Cygwin bin下的git设置
    $ git config --system i18n.commitEncoding utf-8
    $ git config --system i18n.logoutputencoding utf-8
+
+六、过程演示
+$ git diff git_learn.txt
+diff --git a/git_learn.txt b/git_learn.txt
+index 25ecf49..7647465 100644
+--- a/git_learn.txt
++++ b/git_learn.txt
+@@ -61,3 +61,10 @@ no changes added to commit (use "git add" and/or "git commit -a")
+
+ liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+ $
++五、中文乱码怎么破
++1. 代码中包含中文
++   文档使用UTF-8 无BOM编码保存
++   Git Bash 窗体右击 点 options 点左侧 Text 再点右侧的 Local Character set  设置为 zh_CH  UTF-8
++   Cygwin bin下的git设置
++   $ git config --system i18n.commitEncoding utf-8
++   $ git config --system i18n.logoutputencoding utf-8
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   git_learn.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+$ git add git_learn.txt
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   git_learn.txt
+
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+$ git log
+commit 7fa7e8319f0de7b804b15df91b9ab3a8993e4cae (HEAD -> master)
+Author: Liu yahui <yahuiliu_2008@163.com>
+Date:   Tue Aug 1 14:52:59 2017 +0800
+
+    append modify
+
+commit 186453dc78221ec1379dd02edf945c65c153f74a
+Author: Liu yahui <yahuiliu_2008@163.com>
+Date:   Tue Aug 1 13:41:20 2017 +0800
+
+    Write a ABC for git configure
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+$ git commit -m "增加中文乱码解决方案"
+[master afb4d60] 增加中文乱码解决方案
+ 1 file changed, 7 insertions(+)
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+$ git log
+commit afb4d609f0b77ab115ce5e27b21f483ce1adcf74 (HEAD -> master)
+Author: Liu yahui <yahuiliu_2008@163.com>
+Date:   Tue Aug 1 15:34:15 2017 +0800
+
+    增加中文乱码解决方案
+
+commit 7fa7e8319f0de7b804b15df91b9ab3a8993e4cae
+Author: Liu yahui <yahuiliu_2008@163.com>
+Date:   Tue Aug 1 14:52:59 2017 +0800
+
+    append modify
+
+commit 186453dc78221ec1379dd02edf945c65c153f74a
+Author: Liu yahui <yahuiliu_2008@163.com>
+Date:   Tue Aug 1 13:41:20 2017 +0800
+
+    Write a ABC for git configure
+
+liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+$
