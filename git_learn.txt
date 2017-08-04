@@ -365,3 +365,36 @@ $
 
 	liuyh@liuyh-PC MINGW32 /d/gitrep (dev)
 	
+	--合并指定分支到当前分支
+	$ git checkout master
+	Switched to branch 'master'
+	Your branch is up-to-date with 'origin/master'.
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git branch
+	  dev
+	* master
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git merge dev
+	Updating f2bc987..f89263b
+	Fast-forward
+	 git_learn.txt | 21 +++++++++++++++++++++
+	 1 file changed, 21 insertions(+)
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$
+	--合并后删除dev 分支
+	$ git branch
+	  dev
+	* master
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git branch -d dev
+	Deleted branch dev (was f89263b).
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
+	$ git branch
+	* master
+
+	liuyh@liuyh-PC MINGW32 /d/gitrep (master)
